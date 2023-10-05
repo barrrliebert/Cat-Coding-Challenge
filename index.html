@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hasil Check Cats</h1>
+    <h2>Data Uji 1:</h2>
+    <pre id="output1"></pre>
+
+    <h2>Data Uji 2:</h2>
+    <pre id="output2"></pre>
+
+    <script>
+        function checkCats(CatsTuti, CatsNining, outputId) {
+            const correctedCatsTuti = CatsTuti.slice();
+            if (correctedCatsTuti.length >= 3) {
+                correctedCatsTuti[0] = "Anjing";
+                correctedCatsTuti[correctedCatsTuti.length - 1] = "Anjing";
+                correctedCatsTuti[correctedCatsTuti.length - 2] = "Anjing";
+            }
+
+            const allCats = correctedCatsTuti.concat(CatsNining);
+            const output = [];
+
+            allCats.forEach((usia, i) => {
+                if (usia === "Anjing") {
+                    output.push(`Kucing Nomor ${i + 1} adalah Anjing, bukan kucing.`);
+                } else if (usia >= 3) {
+                    output.push(`Kucing Nomor ${i + 1} adalah Kucing Dewasa, dan berusia ${usia} tahun.`);
+                } else {
+                    output.push(`Kucing Nomor ${i + 1} masih anak-anak, dan berusia ${usia} tahun.`);
+                }
+            });
+
+            document.getElementById(outputId).textContent = output.join("\n");
+        }
+
+        // Data uji 1
+        const DataTuti1 = [3, 5, 2, 12, 7];
+        const DataNining1 = [4, 1, 15, 8, 3];
+
+        // Data uji 2
+        const DataTuti2 = [9, 16, 6, 8, 3];
+        const DataNining2 = [10, 5, 6, 1, 4];
+
+        // Jalankan fungsi untuk kedua set data uji
+        checkCats(DataTuti1, DataNining1, "output1");
+        checkCats(DataTuti2, DataNining2, "output2");
+    </script>
+</body>
+</html>
